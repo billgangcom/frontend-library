@@ -4,5 +4,5 @@ export enum Routes {
   Orders = 'Orders',
   Rewards = 'Rewards',
   Balance = 'Balance',
-  Tickets = 'Tickets',
+  // Tickets = 'Tickets',
 }

@@ -1,6 +1,7 @@
 import { useAtom } from '@reatom/npm-react'
 import React from 'react'
 
+import { type GatewayDetail, getGatewaysDetail } from '../../api/balance.js'
 import { Star } from '../../assets/icons.js'
 import { IconWrapper } from '../../common/icon-wrapper.js'
 import { LoadingSpinner } from '../../common/loading-spinner.js'
@@ -11,7 +12,11 @@ import {
   StatusIndicator,
   StatusVariant,
 } from '../../common/status-indicator.js'
-import { extractDateAndTime, formatPrice } from '../../utils/index.js'
+import {
+  convertCfImageIdToUrl,
+  extractDateAndTime,
+  formatPrice,
+} from '../../utils/index.js'
 import {
   type OrderItem,
   OrderStatus,
@@ -49,46 +54,62 @@ const ListTitle: React.FC<ListItemType> = ({ children }) => (
     {children}
   </ListItem>
 )
-
-const OrderRow: React.FC<{ item: OrderItem }> = ({ item }) => {
-  const [date, time] = extractDateAndTime(item.time)
+const getGetwayItem = (name: string, gatewaysDetail: GatewayDetail) => {
+  const item = gatewaysDetail.find((e) => e.name === name)
+  if (!item) {
+    return null
+  }
   return (
-    <React.Fragment key={item.id}>
-      <ListItem>{item.id}</ListItem>
-      <ListItem>
-        <StatusIndicator
-          status={item.status}
-          variant={statusVariantMap[item.status]}
-        />
-      </ListItem>
-      <ListItem>{formatPrice(item.price)}</ListItem>
-      <ListItem>{item.gatewayName}</ListItem>
-      <ListItem>
-        <div>
-          <div>{date}</div>
-          <div className="text-xs text-textSecondary">{time}</div>
-        </div>
-      </ListItem>
-      <ListItem>
-        {item.review ? (
-          <div className="flex-center">
-            <IconWrapper Icon={Star} color="brandDefault" />
-            <div className="ml-1">{item.review.rating}</div>
-          </div>
-        ) : (
-          'None'
-        )}
-      </ListItem>
-    </React.Fragment>
+    <>
+      <img
+        alt={item.displayName}
+        src={convertCfImageIdToUrl(item.logoCfImageId)}
+        className="w-6 h-6 mr-1"
+      />
+      <div>{item.displayName}</div>
+    </>
   )
 }
+const OrderRow: React.FC<{ item: OrderItem; gatewaysDetail: GatewayDetail }> =
+  ({ item, gatewaysDetail }) => {
+    const [date, time] = extractDateAndTime(item.time)
+    return (
+      <React.Fragment key={item.id}>
+        <ListItem>{item.id}</ListItem>
+        <ListItem>
+          <StatusIndicator
+            status={item.status}
+            variant={statusVariantMap[item.status]}
+          />
+        </ListItem>
+        <ListItem>{formatPrice(item.price)}</ListItem>
+        <ListItem>{getGetwayItem(item.gatewayName, gatewaysDetail)}</ListItem>
+        <ListItem>
+          <div>
+            <div>{date}</div>
+            <div className="text-xs text-textSecondary">{time}</div>
+          </div>
+        </ListItem>
+        <ListItem>
+          {item.review ? (
+            <div className="flex-center">
+              <IconWrapper Icon={Star} color="brandDefault" />
+              <div className="ml-1">{item.review.rating}</div>
+            </div>
+          ) : (
+            'None'
+          )}
+        </ListItem>
+      </React.Fragment>
+    )
+  }
 
 export const Orders = () => {
   const [orders] = useAtom(getOrders.dataAtom)
   const [currentPage, setCurrentPage] = useAtom(pageNumberAtom)
   const [pending] = useAtom((ctx) => ctx.spy(getOrders.pendingAtom) > 0)
-
-  const isEmpty = !orders?.list?.length
+  const [gatewaysDetail] = useAtom(getGatewaysDetail.dataAtom)
+  const isEmpty = !orders?.list?.length || !gatewaysDetail
   const isLoadedAndFull = !pending && !isEmpty
 
   return (
@@ -105,7 +126,11 @@ export const Orders = () => {
           <ListTitle>Review</ListTitle>
           {isLoadedAndFull &&
             orders.list.map((item: OrderItem) => (
-              <OrderRow key={item.id} item={item} />
+              <OrderRow
+                key={item.id}
+                item={item}
+                gatewaysDetail={gatewaysDetail}
+              />
             ))}
         </div>
         {isLoadedAndFull && (

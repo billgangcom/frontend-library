@@ -21,7 +21,7 @@ const sidebarItems: [Routes, React.FunctionComponent][] = [
   [Routes.Orders, SealDollar],
   [Routes.Rewards, Medal],
   [Routes.Balance, Wallet],
-  [Routes.Tickets, Question],
+  // [Routes.Tickets, Question],
 ]
 
 interface NavItemProps {

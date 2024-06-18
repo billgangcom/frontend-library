@@ -10,7 +10,8 @@ import { Orders } from '../pages/orders/index.js'
 import { Rewards } from '../pages/rewards/index.js'
 import { Routes } from './routes.js'
 import '../tailwind/index.css'
-const Template = () => <div>Template</div>
+import { getBalanceSettings } from '../api/balance.js'
+// const Template = () => <div>Template</div>
 
 export const routeAtom = atom<Routes>(Routes.Home)
 const RouteToRouteComponent: Record<Routes, React.FunctionComponent> = {
@@ -19,13 +20,14 @@ const RouteToRouteComponent: Record<Routes, React.FunctionComponent> = {
   [Routes.Orders]: Orders,
   [Routes.Rewards]: Rewards,
   [Routes.Balance]: Balance,
-  [Routes.Tickets]: Template,
+  // [Routes.Tickets]: Template,
 }
 
 const App = () => {
   const [token] = useAtom(tokenAtom)
   const [route] = useAtom(routeAtom)
   const ContentComponent = RouteToRouteComponent[route]
+  useAtom(getBalanceSettings.dataAtom)
 
   if (!token) {
     return <Auth />

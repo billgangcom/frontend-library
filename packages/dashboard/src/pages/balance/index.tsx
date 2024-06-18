@@ -11,11 +11,11 @@ import { BalanceModal } from './balance-modal.js'
 import {
   type Transaction,
   TransactionStatus,
-  getBalance,
-  getBalanceSettings,
   getTransactions,
   pageNumberAtom,
 } from './model.js'
+
+import { getBalance, getBalanceSettings } from '../../api/balance.js'
 
 import { Fire, Minus, Plus, Question, ThreeDots } from '../../assets/icons.js'
 

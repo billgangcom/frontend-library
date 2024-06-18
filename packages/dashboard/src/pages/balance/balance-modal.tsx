@@ -8,7 +8,10 @@ import { Input } from '../../common/input.js'
 import { LoadingSpinner } from '../../common/loading-spinner.js'
 import { Modal } from '../../common/modal.js'
 
-import { getGatewaysDetail } from '../../api/gateway.js'
+import {
+  type BalanceTopUpSettings,
+  getGatewaysDetail,
+} from '../../api/balance.js'
 import {
   // ApplePayGooglePay,
   // CashApp,
@@ -23,7 +26,7 @@ import {
 } from '../../assets/icons.js'
 import { ccn, convertCfImageIdToUrl, formatPrice } from '../../utils/index.js'
 import { validateFormStore } from '../../utils/validateFormStore.js'
-import { type BalanceTopUpSettings, requestTopUpBalance } from './model.js'
+import { requestTopUpBalance } from './model.js'
 
 // const gateways = [
 //   {

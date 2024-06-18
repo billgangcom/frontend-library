@@ -9,13 +9,6 @@ type OtpRequest = {
 }
 export const otpRequestAtom = atom<OtpRequest>({ requested: false, email: '' })
 
-/*
- * OTP
- * */
-export enum RequestOtpErrorCode {
-  UNHANDLED = 0,
-}
-
 type RequestOtpParams = {
   email: string
   recaptcha: string
@@ -38,10 +31,6 @@ export const requestOtp = reatomAsync(
     }
   },
 )
-
-/*
- * Auth
- * */
 
 export const loginCustomer = reatomAsync(async (ctx, { otp, recaptcha }) => {
   const url = 'auth/otp/login'
