@@ -79,7 +79,7 @@ const StatItem: React.FC<StatItemProps> = ({
             size="l"
             className="lg:mb-0 mb-1"
           />
-          <div className="lg:ml-3">
+          <div className={image ? 'ml-3' : 'lg:ml-3'}>
             <div className="text-sm text-textSecondary">{title}</div>
             <div className="text-lg font-bold">{value}</div>
           </div>

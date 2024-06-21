@@ -26,7 +26,7 @@ const otpValidation = z.object({
       'Invalid verification code. The code should be a six-digit number. Please try again',
   }),
 })
-interface FormHeaderProps {
+type FormHeaderProps = {
   title: string
   subtitle: string
 }
@@ -38,7 +38,7 @@ const FormHeader: React.FC<FormHeaderProps> = ({ title, subtitle }) => (
   </>
 )
 
-interface FormErrorProps {
+type FormErrorProps = {
   name: string
 }
 

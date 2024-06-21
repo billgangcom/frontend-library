@@ -64,7 +64,7 @@ const getGetwayItem = (name: string, gatewaysDetail: GatewayDetail) => {
       <img
         alt={item.displayName}
         src={convertCfImageIdToUrl(item.logoCfImageId)}
-        className="w-6 h-6 mr-1"
+        className="h-6 mr-1"
       />
       <div>{item.displayName}</div>
     </>

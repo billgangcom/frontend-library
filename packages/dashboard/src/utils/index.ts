@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 export const showError = (message: string) =>
   toast.error(message, {
-    duration: Number.POSITIVE_INFINITY,
+    duration: 30 * 1000,
     closeButton: true,
   })
 

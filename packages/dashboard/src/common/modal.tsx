@@ -2,7 +2,7 @@ import * as Ariakit from '@ariakit/react'
 import { CrossIcon } from '../assets/icons.js'
 import { Dialog } from '../common/dialog.js'
 
-interface ModalProps {
+type ModalProps = {
   store: Ariakit.DialogStore
   children: React.ReactNode
   title: string

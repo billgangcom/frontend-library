@@ -9,13 +9,13 @@ import {
 import ReCAPTCHA from 'react-google-recaptcha'
 export const SITE_KEY = '6LdQiIIpAAAAAAkhvhS9zuo5WNS5mAzZrALD9cCa'
 
-interface ReCaptchaInstance {
+type ReCaptchaInstance = {
   executeAsync: () => Promise<string | null>
   reset: () => void
   getValue: () => string | null
 }
 
-interface ReCaptchaContextType {
+type ReCaptchaContextType = {
   recaptchaRef: RefObject<ReCaptchaInstance>
   executeRecaptcha: () => Promise<string | null>
 }

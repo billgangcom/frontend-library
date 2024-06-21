@@ -24,7 +24,7 @@ const sidebarItems: [Routes, React.FunctionComponent][] = [
   // [Routes.Tickets, Question],
 ]
 
-interface NavItemProps {
+type NavItemProps = {
   children: React.ReactNode
   className?: string
   onClick?: () => void

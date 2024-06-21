@@ -5,7 +5,7 @@ export enum IconPosition {
   Right = 1,
 }
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   icon?: React.ReactNode
   iconPosition?: IconPosition
   className?: string

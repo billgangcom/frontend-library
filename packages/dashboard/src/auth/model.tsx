@@ -1,6 +1,6 @@
 import { action, atom, reatomAsync } from '@reatom/framework'
 import { withLocalStorage } from '@reatom/persist-web-storage'
-import { apiUrlWithShopDomen, request } from '../api/index.js'
+import { getApiUrlWithShopDomen, request } from '../api/index.js'
 
 export const tokenAtom = atom('').pipe(withLocalStorage('token'))
 type OtpRequest = {
@@ -22,7 +22,7 @@ export const requestOtp = reatomAsync(
         email,
         recaptcha,
       },
-      apiUrl: apiUrlWithShopDomen,
+      apiUrl: getApiUrlWithShopDomen(),
       method: 'POST',
       useToken: false,
     })
@@ -38,7 +38,7 @@ export const loginCustomer = reatomAsync(async (ctx, { otp, recaptcha }) => {
   const result = await request(url, {
     method: 'POST',
     body: { email, otp, recaptcha },
-    apiUrl: apiUrlWithShopDomen,
+    apiUrl: getApiUrlWithShopDomen(),
     useToken: false,
   })
   if (result.data) {

@@ -1,5 +1,6 @@
 import { useAtom } from '@reatom/npm-react'
 
+import { getBalanceSettings } from '../../api/balance.js'
 import {
   Bag,
   Billgang,
@@ -13,18 +14,17 @@ import {
   Star,
   TopArrow,
 } from '../../assets/icons.js'
+import { IconWrapper } from '../../common/icon-wrapper.js'
 import { LoadingSpinner } from '../../common/loading-spinner.js'
 // import ChartItem from '../../components/chart-item/index.js'
 import ReferralBlock from '../../components/referral-block/index.js'
 import StatItem from '../../components/stat-item/index.js'
-import { getHome } from './model.js'
-
-import { IconWrapper } from '../../common/icon-wrapper.js'
 import {
   convertCfImageIdToUrl,
   formatPrice,
   formatTimestamp,
 } from '../../utils/index.js'
+import { getHome } from './model.js'
 
 const POWERED_BY = 'Billgang'
 const STORE = 'D4RK'
@@ -37,14 +37,15 @@ const StatContainer = ({ children }: { children: React.ReactNode }) => (
 export const Home = () => {
   const [data] = useAtom(getHome.dataAtom)
   const [pending] = useAtom((ctx) => ctx.spy(getHome.pendingAtom))
+
+  useAtom(getBalanceSettings.dataAtom)
+
   if (pending) return <LoadingSpinner />
   if (!data) return null
 
   return (
-    <div className="grid w-full grid-rows-[repeat(auto,min-content)] gap-4 grid-cols-2 lg:grid-cols-4 lg:pb-6">
-      <div className="col-span-2 lg:col-span-4 row-span-2">
-        <ReferralBlock />
-      </div>
+    <div className="grid w-full gap-4 grid-cols-2 lg:grid-cols-4 lg:pb-6">
+      <ReferralBlock />
       {/* <ChartItem
       title="Referrals"
       value={charts.referrals}

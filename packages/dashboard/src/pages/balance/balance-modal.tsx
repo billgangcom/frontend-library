@@ -162,7 +162,7 @@ export const BalanceModal = (balanceSettings: BalanceTopUpSettings) => {
                   <img
                     alt={e.displayName}
                     src={convertCfImageIdToUrl(e.logoCfImageId)}
-                    className="mb-4 w-6 h-6"
+                    className="mb-4 h-6"
                   />
                   <div>{e.displayName}</div>
                 </button>
