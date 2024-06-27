@@ -1,5 +1,5 @@
 {
-  "name": "billgang",
+  "name": "billgangcom",
   "version": "1.0.1",
   "scripts": {
     "build": "turbo build",
@@ -10,7 +10,7 @@
     "publish-packages": "turbo run build lint test && changeset version && changeset publish"
   },
   "devDependencies": {
-    "@billgang/typescript-config": "workspace:*",
+    "@billgangcom/typescript-config": "workspace:*",
     "@biomejs/biome": "^1.7.3",
     "tsup": "^8.0.2",
     "turbo": "latest"

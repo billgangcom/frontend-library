@@ -1,5 +1,5 @@
 {
-  "name": "@billgang/frontend-lib",
+  "name": "@billgangcom/frontend-lib",
   "version": "1.0.1",
   "type": "module",
   "files": ["dist/"],
@@ -24,7 +24,7 @@
     "build-watch": "tsup --watch"
   },
   "devDependencies": {
-    "@billgang/typescript-config": "workspace:*",
+    "@billgangcom/typescript-config": "workspace:*",
     "@reatom/framework": "^3.4.39",
     "@reatom/npm-react": "^3.8.6",
     "@types/eslint": "^8.56.5",
