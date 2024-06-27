@@ -8,6 +8,7 @@ import NavList from './nav-list.js'
 export const Sidebar = () => {
   const [dashInfo] = useAtom(getDashInfo.dataAtom)
   const [balance] = useAtom(getBalance.dataAtom)
+  console.log({ dashInfo, balance })
 
   if (!dashInfo || !balance) {
     return null

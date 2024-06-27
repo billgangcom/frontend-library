@@ -30,8 +30,8 @@ export type Payment = {
   gateway: string
 }
 
-const apiCustomersUrl = 'https://customers-api.billgang.com'
-const apiOrdersUrl = 'https://sl-api.billgang.com'
+export const apiCustomersUrl = 'https://customers-api.billgang.com'
+export const apiOrdersUrl = 'https://sl-api.billgang.com'
 
 export const getApiUrlWithShopId = () =>
   `${apiCustomersUrl}/${ctx.get(shopIdAtom)}`

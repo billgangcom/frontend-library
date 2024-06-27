@@ -1,7 +1,11 @@
 {
-  "name": "@billgang/dashboard",
+  "name": "@billgang/frontend-lib",
+  "version": "1.0.1",
   "type": "module",
   "files": ["dist/"],
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.js",

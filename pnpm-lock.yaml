@@ -23,12 +23,9 @@ importers:
 
   apps/example:
     dependencies:
-      '@billgang/dashboard':
+      '@billgang/frontend-lib':
         specifier: workspace:^
-        version: link:../../packages/dashboard
-      '@billgang/ui':
-        specifier: workspace:^
-        version: link:../../packages/ui
+        version: link:../../packages/frontend-lib
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -55,7 +52,7 @@ importers:
         specifier: ^5.2.0
         version: 5.2.11(@types/node@20.12.12)
 
-  packages/dashboard:
+  packages/frontend-lib:
     dependencies:
       '@ariakit/react':
         specifier: ^0.4.7
@@ -126,30 +123,6 @@ importers:
         version: 5.4.5
 
   packages/typescript-config: {}
-
-  packages/ui:
-    devDependencies:
-      '@billgang/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@turbo/gen':
-        specifier: ^1.12.4
-        version: 1.13.3(@swc/core@1.5.7)(@types/node@20.12.12)(typescript@5.4.5)
-      '@types/node':
-        specifier: ^20.11.24
-        version: 20.12.12
-      '@types/react':
-        specifier: ^18.2.61
-        version: 18.3.2
-      '@types/react-dom':
-        specifier: ^18.2.19
-        version: 18.3.0
-      react:
-        specifier: ^18.2.0
-        version: 18.3.1
-      typescript:
-        specifier: ^5.3.3
-        version: 5.4.5
 
 packages:
 

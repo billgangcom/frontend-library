@@ -1,7 +1,6 @@
 {
   "name": "billgang",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.1",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",

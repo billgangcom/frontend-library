@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import '@billgang/dashboard/styles.css'
 import App from './App.tsx'
 
 const rootElement = document.getElementById('root')
