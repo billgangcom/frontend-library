@@ -1,5 +1,5 @@
-import { CustomerDashboard } from '@billgang/frontend-lib'
-import '@billgang/frontend-lib/styles.css'
+import { CustomerDashboard } from '@billgangcom/frontend-lib'
+import '@billgangcom/frontend-lib/styles.css'
 
 const shopDomen = 'oreshaver.billgang.store'
 const shopId = '15124f8d-2c8c-4dda-a04c-31c16816f9b6'
