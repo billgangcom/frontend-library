@@ -1,4 +1,4 @@
-import { ctx, shopDomenAtom } from '../index.js'
+import { ctx, shopDomainAtom } from '../index.js'
 import { apiOrdersUrl, request } from './index.js'
 
 type CustomFields = {
@@ -21,7 +21,7 @@ type OrderRequest = {
   discordSocialConnectId?: string | null
 }
 export const postOrders = (body: OrderRequest) =>
-  request(`v1/orders/${ctx.get(shopDomenAtom)}`, {
+  request(`v1/orders/${ctx.get(shopDomainAtom)}`, {
     apiUrl: apiOrdersUrl,
     method: 'POST',
     body,
@@ -29,12 +29,12 @@ export const postOrders = (body: OrderRequest) =>
   })
 
 export const getOrder = (id: string) =>
-  request(`v1/orders/${ctx.get(shopDomenAtom)}/${id}`, {
+  request(`v1/orders/${ctx.get(shopDomainAtom)}/${id}`, {
     apiUrl: apiOrdersUrl,
     useToken: false,
   })
 export const getOrderWithToken = (id: string, token: string) =>
-  request(`v1/orders/${ctx.get(shopDomenAtom)}/${id}/${token}`, {
+  request(`v1/orders/${ctx.get(shopDomainAtom)}/${id}/${token}`, {
     apiUrl: apiOrdersUrl,
     useToken: false,
   })

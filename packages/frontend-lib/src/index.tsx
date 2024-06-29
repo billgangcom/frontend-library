@@ -7,24 +7,24 @@ import App from './app/index.js'
 import { ReCaptchaProvider } from './utils/recapcha.js'
 
 export const ctx = createCtx()
-export const shopDomenAtom = atom('')
+export const shopDomainAtom = atom('')
 export const shopIdAtom = atom('')
 
 type CustomerDashboardType = {
-  shopDomen: string
+  shopDomain: string
   shopId: string
   children: ReactNode
 }
 
 export const BillgangProvider = ({
   children,
-  shopDomen,
+  shopDomain,
   shopId,
 }: CustomerDashboardType) => {
   useLayoutEffect(() => {
-    shopDomenAtom(ctx, shopDomen)
+    shopDomainAtom(ctx, shopDomain)
     shopIdAtom(ctx, shopId)
-  }, [shopDomen, shopId])
+  }, [shopDomain, shopId])
 
   return <reatomContext.Provider value={ctx}>{children}</reatomContext.Provider>
 }

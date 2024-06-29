@@ -1,5 +1,5 @@
 import { logoutCustomer, tokenAtom } from '../auth/model.js'
-import { ctx, shopDomenAtom, shopIdAtom } from '../index.js'
+import { ctx, shopDomainAtom, shopIdAtom } from '../index.js'
 import { type Price, showError } from '../utils/index.js'
 const UNAUTHORIZED_STATUS_CODE = 401
 const NOT_FOUND_STATUS_CODE = 404
@@ -35,8 +35,8 @@ export const apiOrdersUrl = 'https://sl-api.billgang.com'
 
 export const getApiUrlWithShopId = () =>
   `${apiCustomersUrl}/${ctx.get(shopIdAtom)}`
-export const getApiUrlWithShopDomen = () =>
-  `${apiCustomersUrl}/${ctx.get(shopDomenAtom)}`
+export const getApiUrlWithshopDomain = () =>
+  `${apiCustomersUrl}/${ctx.get(shopDomainAtom)}`
 
 export async function request(baseURL: string, options: FetchOptions = {}) {
   const {
@@ -148,7 +148,7 @@ export const signupReferral = (body: ReferralCode) =>
   })
 
 export const postBalanceTopUp = (body: Payment) =>
-  request(`v1/balance/top-up/${ctx.get(shopDomenAtom)}`, {
+  request(`v1/balance/top-up/${ctx.get(shopDomainAtom)}`, {
     apiUrl: apiOrdersUrl,
     method: 'POST',
     body,

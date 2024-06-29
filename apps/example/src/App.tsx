@@ -6,7 +6,7 @@ import {
 import '@billgangcom/frontend-lib/styles.css'
 import { useEffect } from 'react'
 
-const shopDomen = 'oreshaver.billgang.store'
+const shopDomain = 'oreshaver.billgang.store'
 const shopId = '15124f8d-2c8c-4dda-a04c-31c16816f9b6'
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
   }, [])
   return (
     <>
-      <BillgangProvider shopDomen={shopDomen} shopId={shopId}>
+      <BillgangProvider shopDomain={shopDomain} shopId={shopId}>
         <CustomerDashboard />
       </BillgangProvider>
     </>
