@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v1.1.0...frontend-lib-v2.0.0) (2024-06-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* add provider
+
+### Features
+
+* add provider ([d0d5aed](https://github.com/billgangcom/frontend-library/commit/d0d5aed767bfdd3aa4699adddef026e06610e9fc))
+
 ## [1.1.0](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v1.0.1...frontend-lib-v1.1.0) (2024-06-27)
 
 
