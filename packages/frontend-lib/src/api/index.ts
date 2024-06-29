@@ -53,9 +53,7 @@ export async function request(baseURL: string, options: FetchOptions = {}) {
   }
 
   if (useToken) {
-    // const customerToken = ctx.get(tokenAtom)
-    const customerToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI1NDY3NjQ1MSIsImN1c3RvbWVyIjoiVHJ1ZSIsImV4cCI6MTcyNDA2MjU1N30.ISJCOkiy7y-ZnONSYzMXkuleQ3H1Y_dqvkdB5ZPrxe0'
+    const customerToken = ctx.get(tokenAtom)
     headers.Authorization = `Bearer ${customerToken}`
   }
 
