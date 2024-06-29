@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.0.1...frontend-lib-v2.0.2) (2024-06-29)
+
+
+### Bug Fixes
+
+* domain typo ([19ae553](https://github.com/billgangcom/frontend-library/commit/19ae5532f172c7a52b540b0a326354aacd696b2f))
+
 ## [2.0.1](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.0.0...frontend-lib-v2.0.1) (2024-06-29)
 
 
