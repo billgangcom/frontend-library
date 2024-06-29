@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.0.0...frontend-lib-v2.0.1) (2024-06-29)
+
+
+### Bug Fixes
+
+* remove test data ([597e5c8](https://github.com/billgangcom/frontend-library/commit/597e5c873fc2be87ec94420e6a35411f81c65d54))
+
 ## [2.0.0](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v1.1.0...frontend-lib-v2.0.0) (2024-06-29)
 
 
