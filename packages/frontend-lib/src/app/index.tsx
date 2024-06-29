@@ -27,9 +27,9 @@ const App = () => {
   const [route] = useAtom(routeAtom)
   const ContentComponent = RouteToRouteComponent[route]
 
-  if (!token) {
-    return <Auth />
-  }
+  // if (!token) {
+  //   return <Auth />
+  // }
 
   return (
     <main className="h-full flex flex-grow flex-col xl:flex-row">

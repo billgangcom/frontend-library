@@ -1,8 +1,6 @@
+import { ctx, shopDomenAtom } from '../index.js'
 import { apiOrdersUrl, request } from './index.js'
 
-type OrdersMethodsType = {
-  shopDomen: string
-}
 type CustomFields = {
   [key: string]: string
 }
@@ -22,24 +20,21 @@ type OrderRequest = {
   customFields: CustomFields
   discordSocialConnectId?: string | null
 }
-export const ordersMethods = ({ shopDomen }: OrdersMethodsType) => {
-  const postOrders = (body: OrderRequest) =>
-    request(`v1/orders/${shopDomen}`, {
-      apiUrl: apiOrdersUrl,
-      method: 'POST',
-      body,
-      useToken: false,
-    })
+export const postOrders = (body: OrderRequest) =>
+  request(`v1/orders/${ctx.get(shopDomenAtom)}`, {
+    apiUrl: apiOrdersUrl,
+    method: 'POST',
+    body,
+    useToken: false,
+  })
 
-  const getOrder = (id: string) =>
-    request(`v1/orders/${shopDomen}/${id}`, {
-      apiUrl: apiOrdersUrl,
-      useToken: false,
-    })
-  const getOrderWithToken = (id: string, token: string) =>
-    request(`v1/orders/${shopDomen}/${id}/${token}`, {
-      apiUrl: apiOrdersUrl,
-      useToken: false,
-    })
-  return { postOrders, getOrder, getOrderWithToken }
-}
+export const getOrder = (id: string) =>
+  request(`v1/orders/${ctx.get(shopDomenAtom)}/${id}`, {
+    apiUrl: apiOrdersUrl,
+    useToken: false,
+  })
+export const getOrderWithToken = (id: string, token: string) =>
+  request(`v1/orders/${ctx.get(shopDomenAtom)}/${id}/${token}`, {
+    apiUrl: apiOrdersUrl,
+    useToken: false,
+  })

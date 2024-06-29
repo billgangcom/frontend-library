@@ -1,20 +1,23 @@
 import { atom, createCtx } from '@reatom/framework'
 import { reatomContext } from '@reatom/npm-react'
-import { useLayoutEffect } from 'react'
+import { type ReactNode, useLayoutEffect } from 'react'
 import { Toaster } from 'sonner'
-import { ordersMethods } from './api/orders.js'
+import { getOrder, getOrderWithToken, postOrders } from './api/orders.js'
 import App from './app/index.js'
 import { ReCaptchaProvider } from './utils/recapcha.js'
 
 export const ctx = createCtx()
 export const shopDomenAtom = atom('')
 export const shopIdAtom = atom('')
-export type CustomerDashboardType = {
+
+type CustomerDashboardType = {
   shopDomen: string
   shopId: string
+  children: ReactNode
 }
 
-export const CustomerDashboard = ({
+export const BillgangProvider = ({
+  children,
   shopDomen,
   shopId,
 }: CustomerDashboardType) => {
@@ -23,14 +26,16 @@ export const CustomerDashboard = ({
     shopIdAtom(ctx, shopId)
   }, [shopDomen, shopId])
 
+  return <reatomContext.Provider value={ctx}>{children}</reatomContext.Provider>
+}
+
+export const CustomerDashboard = () => {
   return (
-    <reatomContext.Provider value={ctx}>
-      <ReCaptchaProvider>
-        <App />
-        <Toaster richColors closeButton />
-      </ReCaptchaProvider>
-    </reatomContext.Provider>
+    <ReCaptchaProvider>
+      <App />
+      <Toaster richColors closeButton />
+    </ReCaptchaProvider>
   )
 }
 
-export const getOrdersMethods = ordersMethods
+export { getOrder, getOrderWithToken, postOrders }
