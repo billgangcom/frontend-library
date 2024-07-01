@@ -35,10 +35,10 @@ function Slot({ char, isActive }: SlotProps) {
         'relative w-[calc(100%/6)] sm:w-20 h-12',
         'flex items-center justify-center',
         'transition-all duration-300',
-        'border-border border-y border-r first:border-l first:rounded-l-xl last:rounded-r-xl',
-        'group-hover:border-accent-foreground/20 group-focus-within:border-accent-foreground/20',
-        'outline outline-0 outline-accent-foreground/20',
-        isActive && 'outline-1 outline-accent-foreground',
+        'border-border border-r last:border-r-0 first:rounded-l-xl last:rounded-r-xl',
+        'group-hover:border-brandDefault/20 group-focus-within:border-brandDefault/20',
+        'outline outline-0 outline-brandDefault/20',
+        isActive && 'outline-1 outline-brandDefault',
       )}
     >
       {char ? <div>{char}</div> : <div className="text-surface200">0</div>}

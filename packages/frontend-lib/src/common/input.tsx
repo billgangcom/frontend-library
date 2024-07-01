@@ -25,7 +25,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
       <input
         ref={ref}
-        className={`block h-12 w-full rounded-xl border-none bg-surface0 p-3 align-middle placeholder:text-surface200 ${
+        className={`outline-brandDefault block h-12 w-full rounded-xl border-none bg-surface0 p-3 align-middle placeholder:text-surface200 ${
           icon ? (iconPosition === IconPosition.Left ? 'pl-9' : 'pr-10') : ''
         }`}
         {...props}

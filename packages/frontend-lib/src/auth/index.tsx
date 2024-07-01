@@ -85,7 +85,7 @@ export const AuthRequestOtp = () => {
       />
       <FormError name={formStore.names.email.toString()} />
 
-      <Ariakit.FormSubmit render={<Button className="w-full h-11 text-xs" />}>
+      <Ariakit.FormSubmit render={<Button className="w-full h-11" />}>
         Sign In
       </Ariakit.FormSubmit>
     </Ariakit.Form>
@@ -152,7 +152,7 @@ export const AuthLogin = () => {
         >
           Back
         </Button>
-        <Ariakit.FormSubmit render={<Button className="flex-1 h-11 text-xs" />}>
+        <Ariakit.FormSubmit render={<Button className="flex-1 h-11" />}>
           Sign In
         </Ariakit.FormSubmit>
       </div>
