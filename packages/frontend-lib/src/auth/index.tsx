@@ -48,7 +48,7 @@ const FormError: React.FC<FormErrorProps> = ({ name }) => (
 
 export const AuthRequestOtp = () => {
   const submit = useAction(requestOtp)
-  const [{ email }, setOtpRequest] = useAtom(otpRequestAtom)
+  const [{ email }] = useAtom(otpRequestAtom)
 
   const { executeRecaptcha } = useReCaptcha()
 
@@ -148,7 +148,7 @@ export const AuthLogin = () => {
           onClick={back}
           variant="secondary"
           type="button"
-          className="w-[120px] h-11 text-xs mr-4"
+          className="w-[120px] h-11 mr-4"
         >
           Back
         </Button>

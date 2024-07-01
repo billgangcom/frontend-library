@@ -29,13 +29,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     <button
       className={twMerge(
         ccn(
-          'rounded-xl',
-          'py-2',
-          'px-4',
-          'text-sm',
-          'disabled:opacity-50',
-          'flex-center',
-          'flex-shrink-0',
+          'rounded-xl py-2 px-4 text-sm disabled:opacity-50 flex-center flex-shrink-0',
         ),
         variants[variant],
         isSquare ? 'w-8 h-8 p-0 flex-center rounded-lg' : 'w-fit h-9',

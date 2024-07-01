@@ -34,7 +34,7 @@ const NavItem = ({ children, className = '', onClick }: NavItemProps) => (
   <button
     type="button"
     className={twMerge(
-      'xl:border-none flex cursor-pointer items-center py-3 pl-2 pr-4 xl:pr-0 border-b border-transparent w-full',
+      'xl:border-none flex cursor-pointer items-center py-3 pl-2 pr-4 xl:pr-0 border-b border-transparent w-full outline-offset-[-1px] outline-brandDefault xl:rounded-xl',
       className,
     )}
     onClick={onClick}
@@ -57,8 +57,8 @@ const NavList = reatomComponent(({ ctx }) => {
             onClick={() => routeAtom(ctx, text)}
             className={`flex-1 ${
               isActive
-                ? 'xl:rounded-xl xl:bg-surface0 text-textPrimary border-textPrimary'
-                : 'text-textSecondary'
+                ? 'xl:bg-surface0 text-textPrimary border-textPrimary'
+                : 'text-textSecondary bg-surface100 xl:hover:bg-surface0'
             }`}
           >
             <div className="mr-2">

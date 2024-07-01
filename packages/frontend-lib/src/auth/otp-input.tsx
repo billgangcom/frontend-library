@@ -38,7 +38,7 @@ function Slot({ char, isActive }: SlotProps) {
         'border-border border-r last:border-r-0 first:rounded-l-xl last:rounded-r-xl',
         'group-hover:border-brandDefault/20 group-focus-within:border-brandDefault/20',
         'outline outline-0 outline-brandDefault/20',
-        isActive && 'outline-1 outline-brandDefault',
+        isActive && 'outline-2 outline-brandDefault',
       )}
     >
       {char ? <div>{char}</div> : <div className="text-surface200">0</div>}

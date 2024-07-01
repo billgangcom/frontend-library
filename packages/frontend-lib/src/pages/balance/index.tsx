@@ -147,7 +147,7 @@ export const Balance = () => {
           </div>
         )} */}
         <div className="text-textSecondary">Your balance</div>
-        <div className="flex items-baseline flex-col md:flex-row">
+        <div className="flex items-center flex-col md:flex-row">
           <div className="text-xxl font-bold mr-auto leading-10 mb-4 md:mb-0">
             {balance && formatPrice(balance)}
           </div>
@@ -159,8 +159,7 @@ export const Balance = () => {
               variant="secondary"
               className="mr-2 md:mr-4 flex-center w-full md:w-auto shrink"
             >
-              <IconWrapper Icon={Question} />
-              <span className="ml-1">Contact support</span>
+              Contact support
             </Button>
             <Button variant="secondary" isSquare className="rounded-xl h-9 w-9">
               <IconWrapper Icon={ThreeDots} />

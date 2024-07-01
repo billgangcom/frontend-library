@@ -118,7 +118,7 @@ export const BalanceModal = (balanceSettings: BalanceTopUpSettings) => {
     <>
       <Button
         onClick={dialogStore.show}
-        className="mr-4 flex-center mb-2 md:mb-0 w-full md:w-auto"
+        className="md:mr-4 flex-center mb-2 md:mb-0 w-full md:w-auto"
       >
         <IconWrapper color="surface100" Icon={Plus} />
         <span className="ml-1">Add balance</span>
