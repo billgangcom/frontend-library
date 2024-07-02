@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.0.3...frontend-lib-v2.0.4) (2024-07-01)
+
+
+### Bug Fixes
+
+* some style revisions ([4657d66](https://github.com/billgangcom/frontend-library/commit/4657d664aa0490f81280f67d84bd8ba7a48614d2))
+
 ## [2.0.3](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.0.2...frontend-lib-v2.0.3) (2024-07-01)
 
 
