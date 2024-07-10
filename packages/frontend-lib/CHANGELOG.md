@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.1.0...frontend-lib-v2.1.1) (2024-07-10)
+
+
+### Bug Fixes
+
+* replace variable ([a7da922](https://github.com/billgangcom/frontend-library/commit/a7da922b286482f350a97612cdff076783160677))
+
 ## [2.1.0](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.0.4...frontend-lib-v2.1.0) (2024-07-10)
 
 
