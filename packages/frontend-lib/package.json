@@ -2,9 +2,7 @@
   "name": "@billgangcom/frontend-lib",
   "version": "2.1.1",
   "type": "module",
-  "files": [
-    "dist/"
-  ],
+  "files": ["dist/"],
   "publishConfig": {
     "access": "public"
   },
@@ -25,7 +23,7 @@
         "require": "./dist/methods.d.cts"
       }
     },
-    "./styles.css": "./dist/index.css"
+    "./styles.css": "./dist/root.css"
   },
   "scripts": {
     "dev": "pnpm run build-watch",
