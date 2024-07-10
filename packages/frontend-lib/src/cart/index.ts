@@ -11,6 +11,8 @@ import {
 import { tokenAtom } from '../auth/model.js'
 import { ctx } from '../index.js'
 
+const Balance = 'Balance'
+
 type Image = { id: number; cfId: string }
 type Price = { amount: number; currency: string }
 type Gateway = { name: string }
@@ -65,8 +67,6 @@ type ValidateCouponApiData = {
   discount?: number
 }
 
-const Balance = 'Balance'
-
 const validateProductAndVariant = (
   products: Products,
   cartItem: PartOrder,
@@ -111,7 +111,6 @@ const getCommonGateways = (
       if (!variantGateways?.includes(gateway)) gatewaySet.delete(gateway)
     }
   }
-  const Balance = 'Balance'
 
   if (!ctx.get(tokenAtom)) {
     gatewaySet.delete(Balance)
