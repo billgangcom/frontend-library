@@ -16,7 +16,6 @@ import { useEffect } from 'react'
 
 // const shopDomain = 'oreshaver.billgang.store'
 // const shopId = '15124f8d-2c8c-4dda-a04c-31c16816f9b6'
-
 const shopDomain = 'ragingnation.org'
 const shopId = '3b925423-7b65-43d7-a2d3-25c46500306c'
 
