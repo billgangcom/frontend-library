@@ -36,51 +36,41 @@ function Test() {
   } = useCart('yetrajerde@gufum.com')
   const { executeRecaptcha } = useReCaptcha()
 
-  useEffect(() => {
-    const addAndPost = async () => {
-      if (!pending && products.length) {
-        try {
-          addProductToCart({
-            productId: 100000098,
-            productVariantId: 100000125,
-            quantity: 9,
-          })
-          addProductToCart({
-            productId: 100000102,
-            productVariantId: 100000134,
-            quantity: 9,
-          })
-          setPaymentMethod(getPossibleGateways()[0])
-          await applyCoupon('latinamods12')
-          const recaptcha = await executeRecaptcha()
-          if (recaptcha === null) return
-          setRecapcha(recaptcha)
-          await submitCart()
-        } catch (error) {
-          console.error(error)
-        }
+  const addAndPost = async () => {
+    if (!pending && products.length) {
+      try {
+        addProductToCart({
+          productId: 100000098,
+          productVariantId: 100000125,
+          quantity: 9,
+        })
+        addProductToCart({
+          productId: 100000102,
+          productVariantId: 100000134,
+          quantity: 9,
+        })
+        setPaymentMethod(getPossibleGateways()[0])
+        await applyCoupon('latinamods12')
+        const recaptcha = await executeRecaptcha()
+        if (recaptcha === null) return
+        setRecapcha(recaptcha)
+        await submitCart()
+      } catch (error) {
+        console.error(error)
       }
     }
-    addAndPost()
-  }, [
-    products,
-    pending,
-    addProductToCart,
-    getPossibleGateways,
-    submitCart,
-    setPaymentMethod,
-    setRecapcha,
-    applyCoupon,
-    executeRecaptcha,
-  ])
-
+  }
   console.log({
     cart,
     products,
     total: getTotalAndDiscount(),
     gateways: getPossibleGateways(),
   })
-  return null
+  return (
+    <button onClick={addAndPost} type="button">
+      Create Order
+    </button>
+  )
 }
 
 function App() {
@@ -104,9 +94,9 @@ function App() {
       shopPassword={shopPassword}
     >
       <CustomerDashboard />
-      {/* <ReCaptchaProvider>
+      <ReCaptchaProvider>
         <Test />
-      </ReCaptchaProvider> */}
+      </ReCaptchaProvider>
     </BillgangProvider>
   )
 }
