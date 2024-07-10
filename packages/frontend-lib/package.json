@@ -2,19 +2,25 @@
   "name": "@billgangcom/frontend-lib",
   "version": "2.0.4",
   "type": "module",
-  "files": [
-    "dist/"
-  ],
+  "files": ["dist/"],
   "publishConfig": {
     "access": "public"
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
+      "import": "./dist/root.js",
+      "require": "./dist/root.cjs",
       "types": {
-        "import": "./dist/index.d.ts",
-        "require": "./dist/index.d.cts"
+        "import": "./dist/root.d.ts",
+        "require": "./dist/root.d.cts"
+      }
+    },
+    "./methods": {
+      "import": "./dist/methods.js",
+      "require": "./dist/methods.cjs",
+      "types": {
+        "import": "./dist/methods.d.ts",
+        "require": "./dist/methods.d.cts"
       }
     },
     "./styles.css": "./dist/index.css"

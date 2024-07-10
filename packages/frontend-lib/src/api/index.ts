@@ -1,11 +1,11 @@
 import { logoutCustomer, tokenAtom } from '../auth/model.js'
-import { ctx, shopDomainAtom, shopIdAtom } from '../index.js'
+import { ctx, shopDomainAtom, shopIdAtom, shopPasswordAtom } from '../index.js'
 import { type Price, showError } from '../utils/index.js'
 const UNAUTHORIZED_STATUS_CODE = 401
 const NOT_FOUND_STATUS_CODE = 404
 const SystemExceptionError = "Exception of type 'System.Exception' was thrown."
 
-type FetchOptions = Omit<RequestInit, 'body'> & {
+export type FetchOptions = Omit<RequestInit, 'body'> & {
   params?: { [key: string]: string | string[] }
   returnHeaders?: boolean
   apiUrl?: string
@@ -30,12 +30,41 @@ export type Payment = {
   gateway: string
 }
 
+export type PartOrder = {
+  productId: number
+  productVariantId: number
+  quantity: number
+}
+
+export type OrderRequest = {
+  customerEmail: string
+  gateway: string
+  parts: PartOrder[]
+  recaptcha: string
+  coupon?: string | null
+  customFields: Record<string, string>
+  discordSocialConnectId?: string | null
+}
+type MetadataRequest = {
+  routeName: string
+  params: {
+    productPath: string
+  }
+}
+
+type Coupon = {
+  productIds: number[]
+  couponName: string
+  gateway: string
+}
+
 export const apiCustomersUrl = 'https://customers-api.billgang.com'
 export const apiOrdersUrl = 'https://sl-api.billgang.com'
+export const apiStoresUrl = 'https://stores-api.billgang.com'
 
 export const getApiUrlWithShopId = () =>
   `${apiCustomersUrl}/${ctx.get(shopIdAtom)}`
-export const getApiUrlWithshopDomain = () =>
+export const getApiUrlWithShopDomain = () =>
   `${apiCustomersUrl}/${ctx.get(shopDomainAtom)}`
 
 export async function request(baseURL: string, options: FetchOptions = {}) {
@@ -154,6 +183,15 @@ export const postBalanceTopUp = (body: Payment) =>
     body,
     useToken: false,
   })
+
+export const validateCoupon = (body: Coupon) =>
+  request(`v1/coupons/${ctx.get(shopIdAtom)}/validate`, {
+    apiUrl: apiOrdersUrl,
+    method: 'POST',
+    body,
+    useToken: false,
+  })
+
 export const fetchGatewaysDetail = (gateways: string[]) =>
   request('v1/gateways', {
     apiUrl: apiOrdersUrl,
@@ -183,3 +221,48 @@ export const fetchTransactions = ({ PageNumber }: PageType) =>
     url: 'customers/balance/transactions',
     PageNumber,
   })
+
+const makeOrderRequest = (endpoint: string, options?: object) =>
+  request(`v1/orders/${ctx.get(shopDomainAtom)}/${endpoint}`, {
+    apiUrl: apiOrdersUrl,
+    useToken: false,
+    ...options,
+  })
+
+export const postOrder = (body: OrderRequest) =>
+  makeOrderRequest('', {
+    method: 'POST',
+    body,
+  })
+
+export const fetchOrder = (id: string) => makeOrderRequest(id)
+
+export const fetchOrderWithToken = (id: string, token: string) =>
+  makeOrderRequest(`${id}/${token}`)
+
+const makeStoreRequest = (endpoint: string, options?: FetchOptions) => {
+  const { params, ...rest } = options || {}
+  const password = ctx.get(shopPasswordAtom)
+
+  return request(`shops/${ctx.get(shopDomainAtom)}/${endpoint}`, {
+    apiUrl: apiStoresUrl,
+    useToken: false,
+    params: {
+      ...params,
+      ...(password ? { password } : {}),
+    },
+    ...rest,
+  })
+}
+const getListWithIds = (url: string) => (ids?: string[]) =>
+  makeStoreRequest(url, ids && { params: { ids } })
+
+export const fetchTerms = () => makeStoreRequest('terms')
+export const fetchSettings = () => makeStoreRequest('settings')
+export const fetchRefundPolicy = () => makeStoreRequest('refund-policy')
+export const fetchPrivacyPolicy = () => makeStoreRequest('privacy-policy')
+export const fetchProducts = getListWithIds('entities/products')
+export const fetchListings = getListWithIds('entities/listings')
+export const fetchAnnouncements = getListWithIds('entities/posts')
+export const fetchMetadata = (body: MetadataRequest) =>
+  makeStoreRequest('get-metadata', { method: 'POST', body })

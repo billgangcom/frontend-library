@@ -65,10 +65,16 @@ const TopUpSettingsSchema = BaseTopUpSettingsSchema.and(
   ),
 )
 
-const BalanceTopUpSettingsSchema = z.object({
-  isEnabled: z.boolean(),
+const BalanceTopUpSettingsDisabledSchema = z.object({
+  isEnabled: z.literal(false),
+})
+const BalanceTopUpSettingsEnabledSchema = z.object({
+  isEnabled: z.literal(true),
   topUpSettings: TopUpSettingsSchema,
 })
+const BalanceTopUpSettingsSchema = BalanceTopUpSettingsEnabledSchema.or(
+  BalanceTopUpSettingsDisabledSchema,
+)
 export type BalanceTopUpSettings = z.infer<typeof BalanceTopUpSettingsSchema>
 
 export const getBalanceSettings = reatomAsync(async (ctx) => {
@@ -76,7 +82,11 @@ export const getBalanceSettings = reatomAsync(async (ctx) => {
     await fetchBalanceSettings(),
     BalanceTopUpSettingsSchema,
   )
-  getGatewaysDetail(ctx, res.topUpSettings.gateways)
+  if (res.isEnabled) {
+    const gateways = res?.topUpSettings?.gateways
+    gateways && getGatewaysDetail(ctx, gateways)
+  }
+
   return res
 }).pipe(withDataAtom(null))
 
