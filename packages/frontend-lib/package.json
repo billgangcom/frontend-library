@@ -1,8 +1,10 @@
 {
   "name": "@billgangcom/frontend-lib",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "type": "module",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "publishConfig": {
     "access": "public"
   },
