@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.0.4...frontend-lib-v2.1.0) (2024-07-10)
+
+
+### Features
+
+* new api methods and useCart hook ([387aba8](https://github.com/billgangcom/frontend-library/commit/387aba8390491d005cdfd594b7ad1b6f34302801))
+
 ## [2.0.4](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.0.3...frontend-lib-v2.0.4) (2024-07-01)
 
 
