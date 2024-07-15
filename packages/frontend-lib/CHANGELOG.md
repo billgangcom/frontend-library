@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.1.2...frontend-lib-v2.2.0) (2024-07-15)
+
+
+### Features
+
+* requiresSignInGateways and availableGateways ([d807907](https://github.com/billgangcom/frontend-library/commit/d8079074b82f8bf7905a0fc2ac910804119d0f9d))
+
 ## [2.1.2](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.1.1...frontend-lib-v2.1.2) (2024-07-10)
 
 
