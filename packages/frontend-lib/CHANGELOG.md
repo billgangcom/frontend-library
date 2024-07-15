@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.2.0...frontend-lib-v3.0.0) (2024-07-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* updating example
+
+### Bug Fixes
+
+* updating example ([059c002](https://github.com/billgangcom/frontend-library/commit/059c00241a4c8eb80df8dbe9af24512a8edd44b7))
+
 ## [2.2.0](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v2.1.2...frontend-lib-v2.2.0) (2024-07-15)
 
 
