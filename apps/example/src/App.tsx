@@ -48,7 +48,7 @@ function Test() {
           productVariantId: 100000134,
           quantity: 9,
         })
-        setPaymentMethod(getPossibleGateways()[0])
+        setPaymentMethod(getPossibleGateways().availableGateways[0])
         await applyCoupon('belkosko788')
         const recaptcha = await executeRecaptcha()
         if (recaptcha === null) return

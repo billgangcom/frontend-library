@@ -97,6 +97,7 @@ const getGatewaysFromVariant = (variant: Variant) =>
   new Set(variant.gateways.map((g) => g.name))
 
 const emptyGateways = { availableGateways: [], requiresSignInGateways: [] }
+
 const getCommonGateways = (cartItems: PartOrder[], products: Product[]) => {
   if (products.length === 0) return emptyGateways
 
