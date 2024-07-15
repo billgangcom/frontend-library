@@ -49,7 +49,7 @@ function Test() {
           quantity: 9,
         })
         setPaymentMethod(getPossibleGateways()[0])
-        await applyCoupon('latinamods12')
+        await applyCoupon('belkosko788')
         const recaptcha = await executeRecaptcha()
         if (recaptcha === null) return
         setRecapcha(recaptcha)

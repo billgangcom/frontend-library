@@ -93,29 +93,48 @@ const calculateTotalPrice = (cart: PartOrder[], products: Products): number =>
     return variant ? total + variant.price.amount * cartItem.quantity : total
   }, 0)
 
-const getCommonGateways = (
-  cartItems: PartOrder[],
-  products: Products,
-): string[] => {
-  const gatewaySet = new Set(
-    products?.[0]?.variants[0]?.gateways.map((g) => g.name) || [],
-  )
+const getGatewaysFromVariant = (variant: Variant) =>
+  new Set(variant.gateways.map((g) => g.name))
+
+const emptyGateways = { availableGateways: [], requiresSignInGateways: [] }
+const getCommonGateways = (cartItems: PartOrder[], products: Product[]) => {
+  if (products.length === 0) return emptyGateways
+
+  const firstProductVariant = products[0]?.variants[0]
+  if (!firstProductVariant) return emptyGateways
+
+  const availableGateways = getGatewaysFromVariant(firstProductVariant)
 
   for (const cartItem of cartItems) {
     const product = products.find((p) => p.id === cartItem.productId)
-    const variantGateways = product?.variants
-      .find((v) => v.id === cartItem.productVariantId)
-      ?.gateways.map((g) => g.name)
+    if (!product) continue
 
-    for (const gateway of Array.from(gatewaySet)) {
-      if (!variantGateways?.includes(gateway)) gatewaySet.delete(gateway)
+    const variant = product.variants.find(
+      (v) => v.id === cartItem.productVariantId,
+    )
+    if (!variant) continue
+
+    const variantGateways = getGatewaysFromVariant(variant)
+
+    for (const gateway of availableGateways) {
+      if (!variantGateways.has(gateway)) availableGateways.delete(gateway)
     }
   }
 
-  if (!ctx.get(tokenAtom)) {
-    gatewaySet.delete(Balance)
+  const token = ctx.get(tokenAtom)
+
+  if (!token && availableGateways.has(Balance)) {
+    availableGateways.delete(Balance)
+    return {
+      availableGateways: [...availableGateways],
+      requiresSignInGateways: [Balance],
+    }
   }
-  return Array.from(gatewaySet.keys())
+
+  return {
+    availableGateways: [...availableGateways],
+    requiresSignInGateways: [],
+  }
 }
 
 export const useCart = (customerEmail: string) => {
@@ -190,7 +209,8 @@ export const useCart = (customerEmail: string) => {
 
       if (
         currentParts.length &&
-        !getCommonGateways([...currentParts, cartItem], products).length
+        !getCommonGateways([...currentParts, cartItem], products)
+          .availableGateways.length
       ) {
         throw new Error('No common payment gateways available')
       }
