@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.1](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v3.1.0...frontend-lib-v3.1.1) (2024-07-18)
+
+
+### Bug Fixes
+
+* change readme ([2df61c6](https://github.com/billgangcom/frontend-library/commit/2df61c630f51b0b7857535be20c668909e655f44))
+
 ## [3.1.0](https://github.com/billgangcom/frontend-library/compare/frontend-lib-v3.0.0...frontend-lib-v3.1.0) (2024-07-18)
 
 
