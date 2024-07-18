@@ -29,9 +29,9 @@ To get started, wrap your top-level component with the `BillgangProvider`. This 
 ```jsx
 import { BillgangProvider } from '@billgangcom/frontend-lib';
 
-const shopDomain = 'ragingnation.org';
-const shopId = '3b925423-7b65-43d7-a2d3-25c46500306c';
-const shopPassword = '';
+const shopDomain = 'my-shop-domain';
+const shopId = 'my-shop-id';
+const shopPassword = 'my-password';
 
 function App() {
   return (
